@@ -3,7 +3,7 @@ import json
 from src.langgraph_agenticAI.UI.streamlitui.load_ui import LoadStreamLitUI
 from src.langgraph_agenticAI.LLMs.GroqLLM import GroqLLM
 from src.langgraph_agenticAI.Graphs.graph_builder import GraphBuilder
-#from src.langgraph_agenticAI.UI.streamlitui.display_result import DisplayResultStreamlit
+from src.langgraph_agenticAI.UI.streamlitui.display_result import DisplayResultStreamlit
 
 # MAIN Function START
 def load_langgraph_agenticai_app():
