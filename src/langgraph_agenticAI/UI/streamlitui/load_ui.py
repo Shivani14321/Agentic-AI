@@ -2,14 +2,15 @@ import streamlit as st
 import os
 from datetime import date
 
-#from langchain_core import AIMessage, HumanMessage   #because msg we are going to mention in UI is either AImsg or Humanmsg
-from src.langgraph_agenticAI.UI.uiconfigfile import Config    #Config is class
+from langchain_core.messages import AIMessage,HumanMessage
+from src.langgraph_agenticAI.UI.uiconfigfile import Config
 
-class LoadStreamLitUI:
+
+class LoadStreamlitUI:
     def __init__(self):
-        self.config=Config()    #for this cofig we created ini file i.e, uiconfig.ini (text file to store configs in form of key-value pairs) like yaml config. 
-        self.user_controls={}    #dictionary
-        
+        self.config =  Config() # config
+        self.user_controls = {}
+
     def initialize_session(self):
         return {
         "current_step": "requirements",
@@ -20,18 +21,10 @@ class LoadStreamLitUI:
         "review_feedback": "",
         "decision": None
     }
-    """ def render_requirements(self):
-        st.markdown('### Requirement Submission')
-        st. session_state.state["requirements"]= st.text_area(
-            "Enter your Requirements:",
-            height=200,
-            key="req-input"
-        )
-        if st.button("Submit requirements", key="req-input"):
-            st.session_state.state["current_step"] = " generate_User_stories" """
+  
 
 
-    def load_streamlit_ui(self):   
+    def load_streamlit_ui(self):
         st.set_page_config(page_title= "🤖 " + self.config.get_page_title(), layout="wide")
         st.header("🤖 " + self.config.get_page_title())
         st.session_state.timeframe = ''
@@ -40,7 +33,7 @@ class LoadStreamLitUI:
         
         
 
-        with st.sidebar:     #sidebar for left side code
+        with st.sidebar:
             # Get options from config
             llm_options = self.config.get_llm_options()
             usecase_options = self.config.get_usecase_options()
@@ -74,8 +67,6 @@ class LoadStreamLitUI:
             if "state" not in st.session_state:
                 st.session_state.state = self.initialize_session()
             
-            #self.render_requirements()    #this is to load right side of the page with left sidebar
+            
         
         return self.user_controls
-
-
